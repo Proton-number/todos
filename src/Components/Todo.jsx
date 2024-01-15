@@ -16,11 +16,12 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import Todos from "./Todos";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 function Todo({ darkmode, setDarkMode }) {
-  const [inputValue, setInputValue] = useState("");
-  const [data, setData] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
+  const [inputValue, setInputValue] = useLocalStorage("inputValue", "");
+  const [data, setData] = useLocalStorage("data", []);
+  const [isChecked, setIsChecked] = useLocalStorage("checked",false);
 
   const darkModeHandler = () => {
     setDarkMode(true);
@@ -54,12 +55,11 @@ function Todo({ darkmode, setDarkMode }) {
         backgroundSize: "cover",
         height: { xs: "14em", sm: "10em", lg: "12em" },
         color: darkmode ? "white" : "black",
-              position: "relative",
-        
+        position: "relative",
       }}
     >
       <Stack
-        spacing={{xs:1,sm:0}}
+        spacing={{ xs: 1, sm: 0 }}
         sx={{
           alignItems: "center",
           display: "flex",
@@ -95,8 +95,8 @@ function Todo({ darkmode, setDarkMode }) {
           </Box>
         </Stack>
         <Stack spacing={3}>
-                  <Paper
-                      elevation={10}
+          <Paper
+            elevation={10}
             style={{
               backgroundColor: darkmode ? "hsl(232, 24%, 20%)" : "white",
             }}
@@ -105,7 +105,6 @@ function Todo({ darkmode, setDarkMode }) {
               p: "3px 4px",
               display: "flex",
               alignItems: "center",
-              width: 400,
             }}
           >
             <Checkbox
@@ -119,6 +118,7 @@ function Todo({ darkmode, setDarkMode }) {
               sx={{ color: darkmode ? "white" : "black" }}
               fullWidth
               placeholder="Create a new todo.."
+              inputProps={{ maxLength: 36 }}
             />
           </Paper>
 

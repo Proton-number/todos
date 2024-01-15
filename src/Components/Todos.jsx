@@ -10,9 +10,10 @@ import React, { useState } from "react";
 import CircleIcon from "@mui/icons-material/Circle";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import { motion } from "framer-motion";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 function Todos({ darkmode, data, setData }) {
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useLocalStorage("All");
 
   const filteredTodos = () => {
     if (filter === "Active") {
@@ -27,14 +28,12 @@ function Todos({ darkmode, data, setData }) {
   };
 
   const handleCheck = (index) => {
-    // Assuming 'data' is an array of objects with a 'completed' property
     const updatedData = [...data];
     updatedData[index].completed = !updatedData[index].completed;
     setData(updatedData);
   };
 
   const clearCompleted = () => {
-    // Assuming 'data' is an array of objects with a 'completed' property
     const updatedData = data.filter((todo) => !todo.completed);
     setData(updatedData);
   };
@@ -44,8 +43,8 @@ function Todos({ darkmode, data, setData }) {
       elevation={10}
       style={{
         backgroundColor: darkmode ? "hsl(232, 24%, 20%)" : "white",
-        padding: 13,
         color: darkmode ? "white" : "black",
+        padding: "10px",
       }}
     >
       {filteredTodos().length === 0 ? (
@@ -84,6 +83,7 @@ function Todos({ darkmode, data, setData }) {
                       }
                       checked={!!todo.completed}
                     />
+
                     <Typography>{todo.inputValue}</Typography>
                   </Stack>
                   <Divider />
@@ -95,7 +95,7 @@ function Todos({ darkmode, data, setData }) {
 
       <Stack
         direction="row"
-        spacing={{ lg: 2.2 }}
+        spacing={{ xs: 0.8, lg: 2.2 }}
         sx={{
           marginTop: "10px",
           justifyContent: "space-between",

@@ -2,9 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import Todo from "./Components/Todo";
 import { Box } from "@mui/material";
+import { useLocalStorage } from "@uidotdev/usehooks";
+
 
 function App() {
-  const [darkmode, setDarkMode] = useState(true);
+  const [darkmode, setDarkMode] = useLocalStorage ("mode",true);
   return (
     <Box
       sx={{
