@@ -6,7 +6,7 @@ import {
   Checkbox,
   Divider,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import CircleIcon from "@mui/icons-material/Circle";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import { motion } from "framer-motion";

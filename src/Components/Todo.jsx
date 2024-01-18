@@ -7,7 +7,7 @@ import {
   InputBase,
   Checkbox,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import desktopLightBackground from "/src/images/bg-desktop-light.jpg";
 import desktopDarkBackground from "/src/images/bg-desktop-dark.jpg";
 import mobileDarkBackground from "/src/images/bg-mobile-dark.jpg";
@@ -21,7 +21,7 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 function Todo({ darkmode, setDarkMode }) {
   const [inputValue, setInputValue] = useLocalStorage("inputValue", "");
   const [data, setData] = useLocalStorage("data", []);
-  const [isChecked, setIsChecked] = useLocalStorage("checked",false);
+  const [isChecked, setIsChecked] = useLocalStorage("checked", false);
 
   const darkModeHandler = () => {
     setDarkMode(true);
